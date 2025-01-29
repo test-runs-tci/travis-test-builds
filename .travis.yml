@@ -1,9 +1,9 @@
-language: ruby
-ruby: 3.4.0
+language: shell
 os: linux
-
+services:
+  - docker
 install: skip
-script: ruby -v
+script: docker version
 
 jobs:
   include:
