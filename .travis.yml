@@ -12,7 +12,7 @@ addons:
 before_script:
   - sudo sed -i 's/^#*max_prepared_transactions.*/max_prepared_transactions = 100/' /etc/postgresql/9.5/main/postgresql.conf
   - cat /etc/postgresql/9.5/main/postgresql.conf | grep max_prepared_transactions
-  - sudo systemctl start postgresql@9.5-main
+  - sudo systemctl restart postgresql@9.5-main
   - psql -c 'create database frameworkeventstore;' -U postgres
   - psql --version
 install: skip
