@@ -10,7 +10,7 @@ services:
 addons:
   postgresql: '9.5'
 before_script:
-  - find / -name postgresql.conf 2>/dev/null
+  - cat /etc/postgresql/9.5/main/postgresql.conf
   - psql -c 'create database frameworkeventstore;' -U postgres
   - psql --version
 install: skip
