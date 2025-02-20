@@ -14,7 +14,6 @@ before_script:
   - psql --version
 install: skip
 script: sleep 2
-after_success: "${PWD}/target/travis-settings/java/after_success.sh"
 env:
   global:
     - JAVA_TOOL_OPTIONS=-Dhttps.protocols=TLSv1.2,TLSv1,TLSv1.1
