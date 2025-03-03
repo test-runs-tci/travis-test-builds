@@ -1,23 +1,6 @@
-dist: xenial
+dist: focal
 language: java
 os: linux
-jdk:
-  - openjdk17
-git:
-  depth: 3
-services:
-  - postgresql
-addons:
-  postgresql: '9.5'
-before_script:
-  - sudo sed -i 's/^#*max_prepared_transactions.*/max_prepared_transactions = 100/' /etc/postgresql/9.5/main/postgresql.conf
-  - cat /etc/postgresql/9.5/main/postgresql.conf | grep max_prepared_transactions
-  - sudo systemctl restart postgresql@9.5-main
-  - psql -c 'create database frameworkeventstore;' -U postgres
-  - psql --version
+arch: arm64
 install: skip
 script: sleep 2
-env:
-  global:
-    - JAVA_TOOL_OPTIONS=-Dhttps.protocols=TLSv1.2,TLSv1,TLSv1.1
-    - PGPORT=5432
