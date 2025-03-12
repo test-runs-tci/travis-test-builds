@@ -9,4 +9,4 @@ android:
     - extra-android-m2repository
 
 install: skip
-script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --list | grep "platforms;"
+script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list | grep "platforms;"
