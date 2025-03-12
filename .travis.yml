@@ -3,8 +3,8 @@ dist: focal
 android:
   components:
     - android-33
-    - extra
-    - sys-img-armeabi-v7a-android-22
+    #- extra
+    #- sys-img-armeabi-v7a-android-22
 
 install: skip
-script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list | grep "platforms;"
+script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list
