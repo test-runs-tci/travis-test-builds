@@ -11,7 +11,7 @@ android:
     - extras;google;market_apk_expansion
     - extras;google;market_licensing
     - extras;google;simulators
-    - extras;google;webdriver1 
+    - extras;google;webdriver
     - system-images;android-21;default;armeabi-v7a 
 
 install: skip
