@@ -9,4 +9,4 @@ android:
     - extra-android-m2repository
 
 install: skip
-script: android list target
+script: $ANDROID_HOME/tools/bin/sdkmanager --list
