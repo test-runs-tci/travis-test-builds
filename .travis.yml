@@ -2,11 +2,9 @@ language: android
 dist: focal
 android:
   components:
-    - build-tools-30.0.0
-    - android-30
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
+    - android-33
+    - extra
+    - sys-img-armeabi-v7a-android-22
 
 install: skip
 script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list | grep "platforms;"
