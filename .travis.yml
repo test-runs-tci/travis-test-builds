@@ -7,4 +7,6 @@ android:
     #- sys-img-armeabi-v7a-android-22
 
 install: skip
-script: $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list
+script:
+  - $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list
+  - sleep 20
