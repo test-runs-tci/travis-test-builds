@@ -1,20 +1,16 @@
-language: android
+language: shell
 dist: focal
-android:
-  components:
-    - android-33
-    - extras;android;m2repository
-    - extras;google;auto
-    - extras;google;google_play_services
-    - extras;google;instantapps
-    - extras;google;m2repository
-    - extras;google;market_apk_expansion
-    - extras;google;market_licensing
-    - extras;google;simulators
-    - extras;google;webdriver
-    - system-images;android-22;default;armeabi-v7a 
 
 install: skip
 script:
-  - $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=/usr/local/android-sdk --list
-  - sleep 20
+  - sleep 10
+notifications:
+  webhooks:
+    #if: branch = master
+    urls:
+      - https://webhook.site/bda81bf1-affe-4ba5-93c6-89ce57ea8d01
+    on_success: always
+    on_failure: always
+    on_start: never
+    on_cancel: never
+    on_error: always
