@@ -3,4 +3,5 @@ dist: focal
 
 install: skip
 script:
+  - echo $env
   - sleep 10
