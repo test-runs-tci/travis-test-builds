@@ -3,4 +3,4 @@ dist: focal
 
 install: skip
 script:
-  - sleep 1]5
+  - sleep 5
