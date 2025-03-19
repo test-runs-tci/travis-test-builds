@@ -4,13 +4,3 @@ dist: focal
 install: skip
 script:
   - sleep 10
-notifications:
-  webhooks:
-    if: tag IS present
-    urls:
-      - https://webhook.site/bda81bf1-affe-4ba5-93c6-89ce57ea8d01
-    on_success: always
-    on_failure: always
-    on_start: never
-    on_cancel: never
-    on_error: always
