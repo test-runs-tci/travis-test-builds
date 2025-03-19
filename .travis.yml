@@ -1,5 +1,5 @@
 language: shell
-dist: focal
+dist: xenial
 
 install: skip
 script:
