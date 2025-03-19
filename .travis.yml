@@ -1,7 +1,7 @@
 language: shell
-dist: focal
+dist: xenial
 
 install: skip
 script:
   - echo $env
-  - sleep 10
+  - sleep 15
