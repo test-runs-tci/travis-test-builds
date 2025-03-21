@@ -3,4 +3,11 @@ dist: focal
 
 install: skip
 script:
-  - sleep 10
+  - |
+     function keep_alive() {
+       while true; do
+         echo -en "\a"
+         sleep 9m
+       done
+    }
+    keep_alive &
