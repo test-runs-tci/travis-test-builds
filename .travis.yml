@@ -8,13 +8,15 @@ script:
 jobs:
   include:
     - deploy:
-        provider: script
-        script: sleep 10
+        provider: releases
+        token: $GITHUB_TOKEN
+        file: README.md
         on:
           all_branches: true
     - deploy:
-        provider: script
-        script: sleep 10
+        provider: releases
+        token: $GITHUB_TOKEN
+        file: README.md
         edge: true
         on:
           all_branches: true
