@@ -1,4 +1,5 @@
-language: shell
+language: php
+php: '8.3'
 dist: focal
 
 install: skip
