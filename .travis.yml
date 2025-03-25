@@ -3,7 +3,9 @@ dist: focal
 
 install: skip
 script:
-  - sleep 10
+  - sleep 2
 deploy:
   provider: script
   script: sleep 10
+  on:
+    all_branches: true
