@@ -4,8 +4,16 @@ dist: focal
 install: skip
 script:
   - sleep 2
-deploy:
-  provider: script
-  script: sleep 10
-  on:
-    all_branches: true
+jobs:
+  include:
+    - deploy:
+        provider: script
+        script: sleep 10
+        on:
+          all_branches: true
+    - deploy:
+        provider: script
+        script: sleep 10
+        edge: true
+        on:
+          all_branches: true
