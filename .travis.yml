@@ -1,5 +1,4 @@
-language: php
-php: '8.3'
+language: shell
 dist: focal
 
 install: skip
@@ -11,3 +10,4 @@ script:
       echo -en "travis_fold:end:$1\\r"
     }
     wrap_command_logs sleep sleep 30
+    wrap_command_logs kernel-version uname -r
