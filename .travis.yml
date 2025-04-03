@@ -4,18 +4,6 @@ dist: focal
 
 install: skip
 script:
-  - sleep 2
-jobs:
-  include:
-    - deploy:
-        provider: s3
-        bucket: $S3_BUCKET
-        access_key_id: $AWS_ACCESS_KEY_ID
-        secret_access_key: $AWS_SECRET_ACCESS_KEY
-        local_dir: test_dir
-        upload_dir: test/${TRAVIS_BRANCH}
-        region: $AWS_DEFAULT_REGION
-        storage_class: STANDARD_IA
-        edge: true
-        on:
-          all_branches: true
+  - echo 'Sleeping...' && echo -en 'travis_fold:start:sleep\\r'
+  - sleep 30
+  - echo -en 'travis_fold:end:sleep\\r'
