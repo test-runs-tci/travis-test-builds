@@ -4,6 +4,10 @@ dist: focal
 
 install: skip
 script:
-  - echo 'Sleeping...' && echo -en 'travis_fold:start:sleep\\r'
-  - sleep 30
-  - echo -en 'travis_fold:end:sleep\\r'
+  - |
+    wrap_command_logs() {
+      echo "Sleeping..." && echo -en "travis_fold:start:$1\\r"
+      "$@"
+      echo -en "travis_fold:end:$1\\r"
+    }
+    wrap_command_logs sleep sleep 30
