@@ -3,11 +3,10 @@ dist: focal
 
 install: skip
 script:
-  - |
-    wrap_command_logs() {
-      echo "Sleeping..." && echo -en "travis_fold:start:$1\\r"
-      "$@"
-      echo -en "travis_fold:end:$1\\r"
-    }
-    wrap_command_logs sleep sleep 30
-    wrap_command_logs kernel-version uname -r
+  - echo "Sleeping..." && echo -en "travis_fold:start:sleep\\r"
+  - sleep 20
+  - echo -en "travis_fold:end:sleep\\r"
+
+  - echo "Kernel Version..." && echo -en "travis_fold:start:kernel-version\\r"
+  - uname -r
+  - echo -en "travis_fold:end:kernel-version\\r"
