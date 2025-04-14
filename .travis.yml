@@ -1,12 +1,14 @@
-language: shell
-dist: focal
+language: ruby
+ruby: 3.3.8
+dist: bionic
 
 install: skip
 script:
-  - echo "Sleeping..." && echo -en "travis_fold:start:sleep\\r"
-  - sleep 20
-  - echo -en "travis_fold:end:sleep\\r"
+  - ruby -v
 
-  - echo "Kernel Version..." && echo -en "travis_fold:start:kernel-version\\r"
-  - uname -r
-  - echo -en "travis_fold:end:kernel-version\\r"
+jobs:
+  include:
+    - dist: bionic
+    - dist: focal
+    - dist: jammy
+    - dist: noble
