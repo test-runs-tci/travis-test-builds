@@ -9,3 +9,5 @@ script:
 deploy:
   provider: script
   script: sleep 10
+  on:
+    all_branches: true
