@@ -1,14 +1,11 @@
-language: ruby
-ruby: 3.3.8
+language: php
+php: 8.2
 dist: bionic
 
 install: skip
 script:
   - ruby -v
 
-jobs:
-  include:
-    - dist: bionic
-    - dist: focal
-    - dist: jammy
-    - dist: noble
+deploy:
+  provider: script
+  script: sleep 10
