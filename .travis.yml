@@ -1,16 +1,24 @@
-language: php
-php: 8.2
-dist: bionic
+language: ruby
+rvm: 3.4.2
+dist: jammy
+env:
+  global:
+    - RAILS_ENV=test
+    - PG_HOST=localhost
+    - PGUSER=postgres
+    - PGHOST=127.0.0.1
+    - PSQL_PAGER=""
+    - NODE_ENV=production
+    - NODE_OPTIONS=--max-old-space-size=6000
 
+services:
+  - postgresql
+  - elasticsearch
+  - mongodb
+  - rabbitmq
+
+before_install:
+  - sleep 30
+  - curl -X GET 'http://localhost:9200/_cluster/health?pretty'
 install: skip
-script:
-  - ruby -v
-
-deploy:
-  provider: script
-  script: sleep 10
-  skip_cleanup: true
-  #edge: true
-  #dpl_version: 1.10.16
-  on:
-    all_branches: true
+script: true
