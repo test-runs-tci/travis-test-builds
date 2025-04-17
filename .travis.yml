@@ -10,6 +10,7 @@ deploy:
   provider: script
   script: sleep 10
   skip_cleanup: true
-  edge: true
+  #edge: true
+  dpl_version: 1.10.16
   on:
     all_branches: true
