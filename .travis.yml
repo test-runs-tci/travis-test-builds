@@ -9,5 +9,6 @@ script:
 deploy:
   provider: script
   script: sleep 10
+  skip_cleanup: true
   on:
     all_branches: true
