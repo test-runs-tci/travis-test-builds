@@ -1,26 +1,50 @@
-language: ruby
-rvm: 3.4.2
+language: shell
 dist: jammy
-env:
-  global:
-    - RAILS_ENV=test
-    - PG_HOST=localhost
-    - PGUSER=postgres
-    - PGHOST=127.0.0.1
-    - PSQL_PAGER=""
-    - NODE_ENV=production
-    - NODE_OPTIONS=--max-old-space-size=6000
 
 services:
-  - postgresql
-  - mongodb
-  - rabbitmq
+  - elasticserach
 
-before_install:
-  - sudo apt-get -y install elasticsearch
-  - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
-  - sudo systemctl start elasticsearch
-  - sleep 60
-  - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
 install: skip
 script: true
+
+jobs:
+  include:
+    - name: "default travis config for elasticsearch"
+      dist: "bionic"
+      before_install:
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "default travis config for elasticsearch"
+      dist: "focal"
+      before_install:
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "default travis config for elasticsearch"
+      dist: "jammy"
+      before_install:
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "SSL turned off in travis config for elasticsearch"
+      dist: "bionic"
+      before_install:
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "SSL turned off in travis config for elasticsearch"
+      dist: "focal"
+      before_install:
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "SSL turned off in travis config for elasticsearch"
+      dist: "jammy"
+      before_install:
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo systemctl restart elasticsearch
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
