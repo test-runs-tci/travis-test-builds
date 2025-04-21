@@ -1,50 +1,30 @@
-language: shell
+language: python
+python: 3.12
 dist: jammy
 
-services:
-  - elasticserach
-
 install: skip
-script: true
+script: python --version
 
 jobs:
   include:
-    - name: "default travis config for elasticsearch"
-      dist: "bionic"
-      before_install:
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
-    - name: "default travis config for elasticsearch"
-      dist: "focal"
-      before_install:
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
-    - name: "default travis config for elasticsearch"
-      dist: "jammy"
-      before_install:
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
-    - name: "SSL turned off in travis config for elasticsearch"
-      dist: "bionic"
-      before_install:
-        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
-    - name: "SSL turned off in travis config for elasticsearch"
-      dist: "focal"
-      before_install:
-        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
-    - name: "SSL turned off in travis config for elasticsearch"
-      dist: "jammy"
-      before_install:
-        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
-        - sudo systemctl restart elasticsearch
-        - sleep 30
-        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - dist: bionic
+    - dist: focal
+    - dist: jammy
+    - dist: bionic
+      arch: ppc64le
+    - dist: focal
+      arch: ppc64le
+    - dist: jammy
+      arch: ppc64le
+    - dist: bionic
+      arch: s390x
+    - dist: focal
+      arch: s390x
+    - dist: jammy
+      arch: s390x
+    - dist: bionic
+      arch: arm64
+    - dist: focal
+      arch: arm64
+    - dist: jammy
+      arch: arm64
