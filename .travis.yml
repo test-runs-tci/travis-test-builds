@@ -1,30 +1,39 @@
-language: python
-python: 3.12
-dist: jammy
-
-install: skip
-script: python --version
+---
+language: ruby
+os:
+- linux
+dist: focal
+rvm:
+- 3.3.5
+services:
+- mongodb
+script:
+- until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
 
 jobs:
   include:
-    - dist: bionic
-    - dist: focal
-    - dist: jammy
-    - dist: bionic
-      arch: ppc64le
-    - dist: focal
-      arch: ppc64le
-    - dist: jammy
-      arch: ppc64le
-    - dist: bionic
-      arch: s390x
-    - dist: focal
-      arch: s390x
-    - dist: jammy
-      arch: s390x
-    - dist: bionic
-      arch: arm64
-    - dist: focal
-      arch: arm64
-    - dist: jammy
-      arch: arm64
+    - name: "AS-IS"
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+    - name: "ADD_SLEEP_30"
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+        - sleep 30
+    - name: "ADD_WORKAROUND"
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo service elasticsearch start
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
