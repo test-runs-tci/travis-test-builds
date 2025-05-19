@@ -13,14 +13,16 @@ script:
 
 jobs:
   include:
-    - name: "AS-IS"
+    - name: "AS-IS: Xenial"
+      dist: xenial
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
         - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
-    - name: "ADD_SLEEP_30"
+    - name: "ADD_SLEEP_30: Xenial"
+      dist: xenial
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
         - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
@@ -28,7 +30,92 @@ jobs:
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
         - sleep 30
-    - name: "ADD_WORKAROUND"
+    - name: "ADD_WORKAROUND: Xenial"
+      dist: xenial
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo service elasticsearch start
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "AS-IS: Bionic"
+      dist: bionic
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+    - name: "ADD_SLEEP_30: Bionic"
+      dist: bionic
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+        - sleep 30
+    - name: "ADD_WORKAROUND: Bionic"
+      dist: bionic
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo service elasticsearch start
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "AS-IS: Focal"
+      dist: focal
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+    - name: "ADD_SLEEP_30: Focal"
+      dist: focal
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+        - sleep 30
+    - name: "ADD_WORKAROUND: Focal"
+      dist: focal
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
+        - sudo service elasticsearch start
+        - sleep 30
+        - until curl --silent -XGET --fail http://localhost:9200/_cluster/health?pretty; do printf '...\n'; sleep 2; done
+    - name: "AS-IS: Jammy"
+      dist: jammy
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+    - name: "ADD_SLEEP_30: Jammy"
+      dist: jammy
+      before_install:
+        - sudo rm -rf /var/lib/elasticsearch
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - sudo dpkg -i --force-confnew elasticsearch.deb
+        - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+        - sudo service elasticsearch start
+        - sleep 30
+    - name: "ADD_WORKAROUND: Jammy"
+      dist: jammy
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
         - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
