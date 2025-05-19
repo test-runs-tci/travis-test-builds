@@ -17,7 +17,7 @@ jobs:
       dist: xenial
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -25,7 +25,7 @@ jobs:
       dist: xenial
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -34,7 +34,7 @@ jobs:
       dist: xenial
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
@@ -45,7 +45,7 @@ jobs:
       dist: bionic
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -53,7 +53,7 @@ jobs:
       dist: bionic
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -62,7 +62,7 @@ jobs:
       dist: bionic
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
@@ -73,7 +73,7 @@ jobs:
       dist: focal
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -81,7 +81,7 @@ jobs:
       dist: focal
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -90,7 +90,7 @@ jobs:
       dist: focal
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
@@ -101,7 +101,7 @@ jobs:
       dist: jammy
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -109,7 +109,7 @@ jobs:
       dist: jammy
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - sudo service elasticsearch start
@@ -118,7 +118,7 @@ jobs:
       dist: jammy
       before_install:
         - sudo rm -rf /var/lib/elasticsearch
-        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.deb -o elasticsearch.deb
+        - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.28-amd64.deb -o elasticsearch.deb
         - sudo dpkg -i --force-confnew elasticsearch.deb
         - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
         - 'sudo sed -i "s/enabled: true/enabled: false/g" /etc/elasticsearch/elasticsearch.yml'
