@@ -8,6 +8,8 @@ deploy:
   provider: script
   script: ruby --version
   dpl_version: "1.10.16"
+  on:
+    all_branches: true
 jobs:
   include:
     - dist: xenial
