@@ -1,12 +1,16 @@
-language: ruby
+language: shell
 os: linux
 dist: focal
-rvm: 3.4.4
 install: skip
 script:
-- ruby -v
+- sleep 10
+deploy:
+  provider: script
+  script: ruby --version
+  dpl_version: "1.10.16"
 jobs:
   include:
+    - dist: xenial
     - dist: bionic
     - dist: focal
     - dist: jammy
