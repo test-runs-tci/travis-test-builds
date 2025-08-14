@@ -1,19 +1,9 @@
-language: ruby
-rvm: 3.2.2
+language: php
+rvm: 8.3
 os: linux
-dist: focal
-before_install:
-  - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-amd64.deb -o elasticsearch.deb
-  - sudo dpkg -i --force-confnew elasticsearch.deb
-  - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
-  - sudo service elasticsearch restart
-install: skip
+dist: jammy
+
 script:
-- until curl --silent -XGET --fail http://localhost:9200; do printf '...\n'; sleep 2; done
-jobs:
-  include:
-    - dist: xenial
-    - dist: bionic
-    - dist: focal
-    - dist: jammy
-    - dist: noble
+  - php --version
+  - which php
+  - composer --version
