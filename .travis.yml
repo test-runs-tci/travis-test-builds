@@ -1,9 +1,17 @@
-language: php
-php: 8.3
-os: linux
-dist: jammy
-
-script:
-  - php --version
-  - which php
-  - composer --version
+language: c
+before_script:
+  - sudo apt update && sudo apt -y install astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz valgrind libgmp-dev
+jobs:
+  include:
+    - arch: ppc64le
+      os: linux
+      dist: focal
+      compiler: gcc
+      script:
+        - true
+    - arch: s390x
+      os: linux
+      dist: focal
+      compiler: gcc
+      script:
+        - true
