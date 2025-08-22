@@ -1,17 +1,11 @@
-language: c
-before_script:
-  - sudo apt update && sudo apt -y install astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz valgrind libgmp-dev
-jobs:
-  include:
-    - arch: ppc64le
-      os: linux
-      dist: focal
-      compiler: gcc
-      script:
-        - true
-    - arch: s390x
-      os: linux
-      dist: focal
-      compiler: gcc
-      script:
-        - true
+language: shell
+os: linux
+dist: jammy
+
+before_install:
+  - curl -o- https://raw.githubusercontent.com/ArdaGnsrn/pvm-ubuntu/master/install.sh | sudo bash
+  - pvm list
+  - pvm install 8.3
+  - pvm use 8.3
+
+script: php -v
