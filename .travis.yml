@@ -3,12 +3,16 @@ os: linux
 dist: jammy
 
 before_install:
-  - curl -o- https://raw.githubusercontent.com/ArdaGnsrn/pvm-ubuntu/master/install.sh | sudo bash
-  - pvm install 8.3
-  - pvm use 8.3
+  # Remove phpenv
+  - rmdir ~/.phpenv/shims || true
+  - export PATH="/usr/bin:$PATH"
   # Remove if composer exists
   - if [ -f /usr/bin/composer ]; then sudo rm -f /usr/bin/composer; fi
   - if [ -f /usr/local/bin/composer ]; then sudo rm -f /usr/local/bin/composer; fi
+  # Install PVM and use PVM to install php 8.3
+  - curl -o- https://raw.githubusercontent.com/ArdaGnsrn/pvm-ubuntu/master/install.sh | sudo bash
+  - pvm install 8.3
+  - pvm use 8.3
 
   # Install Composer for PHP 8.3
   - EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
