@@ -8,4 +8,8 @@ before_install:
   - pvm install 8.3
   - pvm use 8.3
 
-script: php -v
+script:
+  - php -v
+  - which php
+  - php8.3 -v
+  - which php8.3
