@@ -3,8 +3,10 @@ os: linux
 dist: jammy
 
 before_install:
-  # Remove phpenv
+  # Remove phpenv shims
   - rmdir ~/.phpenv/shims || true
+  - rm -f ~/.phpenv/shims/composer
+  - hash -r
   # Remove if composer exists
   - if [ -f /usr/bin/composer ]; then sudo rm -f /usr/bin/composer; fi
   - if [ -f /usr/local/bin/composer ]; then sudo rm -f /usr/local/bin/composer; fi
