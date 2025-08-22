@@ -5,7 +5,6 @@ dist: jammy
 before_install:
   # Remove phpenv
   - rmdir ~/.phpenv/shims || true
-  - export PATH="/usr/bin:$PATH"
   # Remove if composer exists
   - if [ -f /usr/bin/composer ]; then sudo rm -f /usr/bin/composer; fi
   - if [ -f /usr/local/bin/composer ]; then sudo rm -f /usr/local/bin/composer; fi
@@ -13,7 +12,7 @@ before_install:
   - curl -o- https://raw.githubusercontent.com/ArdaGnsrn/pvm-ubuntu/master/install.sh | sudo bash
   - pvm install 8.3
   - pvm use 8.3
-
+  - export PATH="/usr/bin:$PATH"
   # Install Composer for PHP 8.3
   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   - sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
