@@ -9,12 +9,6 @@ before_install:
   - pvm use 8.3
 
 script:
+  - rmdir ~/.phpenv/shims || true
+  - export PATH="/usr/bin:$PATH"
   - php -v
-  - which php
-  - php8.3 -v
-  - which php8.3
-
-  - sudo update-alternatives --install /usr/bin/php php /usr/bin/php8.3 80
-  - sudo update-alternatives --set php /usr/bin/php8.3
-  - php -v
-  - which php
