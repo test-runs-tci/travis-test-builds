@@ -19,6 +19,7 @@ before_install:
   - rm composer-setup.php
 
   # Verify composer is running with PHP 8.3
+  - php -v
   - which composer
   - composer --version
 
