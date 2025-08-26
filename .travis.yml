@@ -26,4 +26,4 @@ before_install:
   - composer --version
 
 script:
-  - sleep 10
+  - sleep 5
