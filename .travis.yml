@@ -2,28 +2,15 @@ language: shell
 os: linux
 dist: jammy
 
-before_install:
-  # Remove phpenv shims
-  - rmdir ~/.phpenv/shims || true > /dev/null 2>&1
-  - rm -f ~/.phpenv/shims/composer > /dev/null 2>&1
-  - hash -r
-  # Remove if composer exists
-  - if [ -f /usr/bin/composer ]; then sudo rm -f /usr/bin/composer; fi
-  - if [ -f /usr/local/bin/composer ]; then sudo rm -f /usr/local/bin/composer; fi
-  # Install PVM and use PVM to install php 8.3
-  - curl -o- https://raw.githubusercontent.com/ArdaGnsrn/pvm-ubuntu/master/install.sh | sudo bash > /dev/null 2>&1
-  - pvm install 8.3 > /dev/null 2>&1
-  - pvm use 8.3 > /dev/null 2>&1
-  # Install Composer for PHP 8.3
-  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" > /dev/null 2>&1
-  - sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer > /dev/null 2>&1
-  - rm composer-setup.php > /dev/null 2>&1
+install: skip
 
-  # Verify composer is running with PHP 8.3
-  - export PATH="/usr/bin:$PATH"
-  - php -v
-  - which composer
-  - composer --version
-
-script:
-  - sleep 5
+jobs:
+  include:
+    - name: "Should not be passing but passed"
+      before_script:
+        - chmod +x fail.sh
+      script: ./fail.sh
+    - name: "Should not be passing and does not"
+      before_script:
+        - chmod +x fail-enhanced.sh
+      script: ./fail-enhanced.sh
