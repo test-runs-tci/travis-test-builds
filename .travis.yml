@@ -4,15 +4,5 @@ dist: jammy
 
 install: skip
 
-jobs:
-  include:
-    - name: "Should not be passing but passed"
-      before_script:
-        - chmod +x fail.sh
-      script: ./fail.sh
-      after_script: sleep 10
-    - name: "Should not be passing and does not"
-      before_script:
-        - chmod +x fail-enhanced.sh
-      script: ./fail-enhanced.sh
-      after_script: sleep 15
+script:
+  - travis_wait sleep 90000
