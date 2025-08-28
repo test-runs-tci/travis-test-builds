@@ -1,8 +1,9 @@
-language: shell
+language: php
+php: 8.3
 os: linux
-dist: jammy
+dist: noble
 
 install: skip
 
 script:
-  - travis_wait sleep 90000
+  - php --version
