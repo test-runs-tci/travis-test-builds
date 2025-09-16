@@ -1,9 +1,9 @@
-language: php
-php: 8.3
+language: shell
+arch: ppc64le
 os: linux
-dist: noble
+dist: focal
 
 install: skip
 
 script:
-  - php --version
+  - sleep 10
