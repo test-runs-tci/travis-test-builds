@@ -7,3 +7,14 @@ install: skip
 
 script:
   - sleep 10
+
+jobs:
+  include:
+    - stage: BUILD
+      script: sleep 3
+    - stage: TEST
+      script: sleep 5
+    - stage: TEST
+      script: sleep 7
+     - stage: DEPLOY
+      script: sleep 10
