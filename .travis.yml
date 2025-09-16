@@ -16,5 +16,5 @@ jobs:
       script: sleep 5
     - stage: TEST
       script: sleep 7
-     - stage: DEPLOY
+    - stage: DEPLOY
       script: sleep 10
