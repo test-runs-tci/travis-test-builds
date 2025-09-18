@@ -5,6 +5,7 @@ dist: focal
 jobs:
   include:
     - arch: ppc64le
+      virt: vm
       install:
         - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-PPC64LE.tar.gz
         - tar -xzf trivy_0.66.0_Linux-PPC64LE.tar.gz
@@ -21,6 +22,41 @@ jobs:
         - sleep 10
         - cat trivy_source_vulnerabilities_results.json
     - arch: arm64
+      virt: vm
+      install:
+        - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-ARM64.tar.gz
+        - tar -xzf trivy_0.66.0_Linux-ARM64.tar.gz
+        - chmod +x trivy
+        - sudo mv trivy /usr/bin
+        - sleep 10
+      script:
+        - trivy --version
+        - git clone https://github.com/apache/camel-quarkus.git camel
+        - sleep 10
+        - free -hm
+        - echo "Executing trivy scanner"
+        - travis_wait 50 sudo trivy fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
+        - sleep 10
+        - cat trivy_source_vulnerabilities_results.json
+    - arch: ppc64le
+      virt: lxd
+      install:
+        - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-PPC64LE.tar.gz
+        - tar -xzf trivy_0.66.0_Linux-PPC64LE.tar.gz
+        - chmod +x trivy
+        - sudo mv trivy /usr/bin
+        - sleep 10
+      script:
+        - trivy --version
+        - git clone https://github.com/apache/camel-quarkus.git camel
+        - sleep 10
+        - free -hm
+        - echo "Executing trivy scanner"
+        - travis_wait 50 sudo trivy fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
+        - sleep 10
+        - cat trivy_source_vulnerabilities_results.json
+    - arch: arm64
+      virt: lxd
       install:
         - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-ARM64.tar.gz
         - tar -xzf trivy_0.66.0_Linux-ARM64.tar.gz
