@@ -4,9 +4,8 @@ os: linux
 dist: focal
 
 install:
-  - export TRIVY_VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
-  - wget https://github.com/aquasecurity/trivy/releases/download/${TRIVY_VERSION}/trivy_${TRIVY_VERSION#v}_Linux-PPC64LE.tar.gz
-  - tar -xzf trivy_${TRIVY_VERSION#v}_Linux-PPC64LE.tar.gz
+  - wget https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-PPC64LE.tar.gz
+  - tar -xzf trivy_0.66.0_Linux-PPC64LE.tar.gz
   - chmod +x trivy
   - sudo mv trivy /usr/bin
   - sleep 10
