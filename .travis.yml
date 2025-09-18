@@ -10,8 +10,11 @@ install:
      tar -xzf trivy_${TRIVY_VERSION#v}_Linux-PPC64LE.tar.gz
      chmod +x trivy
      sudo mv trivy /usr/bin
+     sleep 10
 script:
   - trivy --version
   - git clone https://github.com/apache/camel-quarkus.git camel
+  - sleep 10
+  - free -hm
   - echo "Executing trivy scanner"
   - sudo trivy -q fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
