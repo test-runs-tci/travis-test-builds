@@ -17,7 +17,25 @@ jobs:
         - sleep 10
         - free -hm
         - echo "Executing trivy scanner"
-        - sudo trivy -q fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
+        - travis_wait 50 sudo trivy fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
+        - sleep 10
+        - cat trivy_source_vulnerabilities_results.json
+    - arch: arm64
+      install:
+        - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-ARM64.tar.gz
+        - tar -xzf trivy_0.66.0_Linux-ARM64.tar.gz
+        - chmod +x trivy
+        - sudo mv trivy /usr/bin
+        - sleep 10
+      script:
+        - trivy --version
+        - git clone https://github.com/apache/camel-quarkus.git camel
+        - sleep 10
+        - free -hm
+        - echo "Executing trivy scanner"
+        - travis_wait 50 sudo trivy fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
+        - sleep 10
+        - cat trivy_source_vulnerabilities_results.json
     - arch: amd64
       install:
         - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-64bit.tar.gz
@@ -32,6 +50,6 @@ jobs:
         - sleep 10
         - free -hm
         - echo "Executing trivy scanner"
-        - sudo trivy fs --timeout 30m -f json . > trivy_source_vulnerabilities_results.json
+        - travis_wait 50 sudo trivy fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
         - sleep 10
         - cat trivy_source_vulnerabilities_results.json
