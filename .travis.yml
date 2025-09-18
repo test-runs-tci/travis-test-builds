@@ -31,4 +31,4 @@ jobs:
         - sleep 10
         - free -hm
         - echo "Executing trivy scanner"
-        - sudo trivy -q fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
+        - sudo trivy fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
