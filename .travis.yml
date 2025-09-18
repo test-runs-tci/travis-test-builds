@@ -14,4 +14,4 @@ script:
   - trivy --version
   - git clone https://github.com/apache/camel-quarkus.git camel
   - echo "Executing trivy scanner"
-	- sudo trivy -q fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
+  - sudo trivy -q fs --timeout 30m -f json camel > trivy_source_vulnerabilities_results.json
