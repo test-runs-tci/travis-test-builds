@@ -3,15 +3,11 @@ arch: ppc64le
 os: linux
 dist: focal
 
-install: skip
-
-jobs:
-  include:
-    - stage: BUILD
-      script: sleep 3
-    - stage: TEST
-      script: sleep 5
-    - stage: TEST
-      script: sleep 7
-    - stage: DEPLOY
-      script: sleep 10
+install:
+  - |
+     TRIVY_VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
+     wget https://github.com/aquasecurity/trivy/releases/download/${TRIVY_VERSION}/trivy_${TRIVY_VERSION#v}_Linux-PPC64LE.tar.gz
+     tar -xzf trivy_${TRIVY_VERSION#v}_Linux-PPC64LE.tar.gz
+     chmod +x trivy
+     sudo mv trivy /usr/bin
+script: trivy --version
