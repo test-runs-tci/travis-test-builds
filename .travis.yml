@@ -4,6 +4,10 @@ dist: focal
 
 jobs:
   include:
+    - arch: arm64
+      install: skip
+      script:
+        - sudo apt update
     - arch: ppc64le
       virt: vm
       install:
