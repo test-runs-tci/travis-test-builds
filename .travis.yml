@@ -29,7 +29,7 @@ jobs:
       dist: focal
       vm:
         size: large
-    - name: LARGE VM SIZE on FOCAL
+    - name: LARGE VM SIZE on JAMMY
       dist: jammy
       vm:
         size: large
@@ -37,7 +37,7 @@ jobs:
       dist: focal
       vm:
         size: x-large
-    - name: X-LARGE VM SIZE on FOCAL
+    - name: X-LARGE VM SIZE on JAMMY
       dist: jammy
       vm:
         size: x-large
