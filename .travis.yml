@@ -15,11 +15,29 @@ script:
   - sleep 10
   - free -hm
   - echo "Executing trivy scanner"
-  - sudo trivy -q fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
+  - sudo trivy fs -q --timeout 50m -f json --scanners vuln --skip-dirs .git --skip-dirs target --skip-dirs build --parallel 1 . > trivy_source_vulnerabilities_results.json
   - echo trivy_source_vulnerabilities_results.json
   - sleep 15
 
 jobs:
   include:
-    - dist: focal
-    - dist: jammy
+    - name: DEFAULT VM SIZE on FOCAL
+      dist: focal
+    - name: DEFAULT VM SIZE on JAMMY
+      dist: jammy
+    - name: LARGE VM SIZE on FOCAL
+      dist: focal
+      vm:
+        size: large
+    - name: LARGE VM SIZE on FOCAL
+      dist: jammy
+      vm:
+        size: large
+    - name: X-LARGE VM SIZE on FOCAL
+      dist: focal
+      vm:
+        size: x-large
+    - name: X-LARGE VM SIZE on FOCAL
+      dist: jammy
+      vm:
+        size: x-large
