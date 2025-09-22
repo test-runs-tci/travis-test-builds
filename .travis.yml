@@ -1,4 +1,4 @@
-arch: ppc64le
+arch: amd64
 language: shell
 os: linux
 dist: focal
@@ -11,10 +11,11 @@ install:
 script:
   - trivy --version
   - git clone https://github.com/apache/camel-quarkus.git camel
+  - cd camel && git checkout tags/3.26.0
   - sleep 10
   - free -hm
   - echo "Executing trivy scanner"
-  - sudo trivy -q fs --timeout 50m -f json ./camel > trivy_source_vulnerabilities_results.json
+  - sudo trivy -q fs --timeout 50m -f json . > trivy_source_vulnerabilities_results.json
   - echo trivy_source_vulnerabilities_results.json
   - sleep 15
 
