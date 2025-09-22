@@ -4,7 +4,7 @@ os: linux
 dist: focal
 install:
   - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-64bit.tar.gz
-  - tar -xzf trivy_0.66.0_Linux-PPC64LE.tar.gz
+  - tar -xzf trivy_0.66.0_Linux-64bit.tar.gz
   - chmod +x trivy
   - sudo mv trivy /usr/bin
   - sleep 10
