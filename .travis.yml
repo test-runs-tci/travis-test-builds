@@ -16,3 +16,8 @@ script:
   - sudo trivy -q fs --timeout 50m -f json ./camel > trivy_source_vulnerabilities_results.json
   - echo trivy_source_vulnerabilities_results.json
   - sleep 15
+
+jobs:
+  include:
+    - dist: focal
+    - dist: jammy
