@@ -15,7 +15,7 @@ script:
   - sleep 10
   - free -hm
   - echo "Executing trivy scanner"
-  - sudo trivy fs -q --timeout 50m -f json --scanners vuln --skip-dirs .git --skip-dirs target --skip-dirs build --parallel 1 . > trivy_source_vulnerabilities_results.json
+  - travis_wait 70 sudo trivy fs -q --timeout 50m -f json --scanners vuln --skip-dirs .git --skip-dirs target --skip-dirs build --parallel 1 . > trivy_source_vulnerabilities_results.json
   - echo trivy_source_vulnerabilities_results.json
   - sleep 15
 
