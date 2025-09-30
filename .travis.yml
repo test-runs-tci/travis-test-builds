@@ -3,4 +3,4 @@ language: shell
 os: linux
 dist: focal
 install: skip
-script: sleep 300
+script: sleep 400
