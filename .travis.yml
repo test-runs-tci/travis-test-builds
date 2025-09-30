@@ -2,42 +2,5 @@ arch: amd64
 language: shell
 os: linux
 dist: focal
-install:
-  - wget -q https://github.com/aquasecurity/trivy/releases/download/v0.66.0/trivy_0.66.0_Linux-64bit.tar.gz
-  - tar -xzf trivy_0.66.0_Linux-64bit.tar.gz
-  - chmod +x trivy
-  - sudo mv trivy /usr/bin
-  - sleep 10
-script:
-  - trivy --version
-  - git clone https://github.com/apache/camel-quarkus.git camel
-  - cd camel && git checkout tags/3.26.0
-  - sleep 10
-  - free -hm
-  - echo "Executing trivy scanner"
-  - travis_wait 70 sudo trivy fs -q --timeout 70m -f json --scanners vuln --skip-dirs .git --skip-dirs target --skip-dirs build --parallel 1 . > trivy_source_vulnerabilities_results.json
-  - echo trivy_source_vulnerabilities_results.json
-  - sleep 15
-
-jobs:
-  include:
-    - name: DEFAULT VM SIZE on FOCAL
-      dist: focal
-    - name: DEFAULT VM SIZE on JAMMY
-      dist: jammy
-    - name: LARGE VM SIZE on FOCAL
-      dist: focal
-      vm:
-        size: large
-    - name: LARGE VM SIZE on JAMMY
-      dist: jammy
-      vm:
-        size: large
-    - name: X-LARGE VM SIZE on FOCAL
-      dist: focal
-      vm:
-        size: x-large
-    - name: X-LARGE VM SIZE on JAMMY
-      dist: jammy
-      vm:
-        size: x-large
+install: skip
+script: true
