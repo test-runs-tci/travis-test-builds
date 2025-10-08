@@ -18,7 +18,7 @@ jobs:
       dist: jammy
       script:
         - docker images
-        - docker load -i -test.tar
+        - docker load -i test.tar
         - docker images
       workspaces:
         use:
@@ -37,7 +37,7 @@ jobs:
       dist: jammy
       script:
         - docker images
-        - docker load -i -test.tar
+        - docker load -i test.tar
         - docker images
       workspaces:
         use:
