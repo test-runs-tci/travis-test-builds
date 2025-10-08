@@ -1,6 +1,45 @@
-arch: amd64
-language: shell
 os: linux
 dist: focal
-install: skip
-script: sleep 400
+language: shell
+
+jobs:
+  include:
+    - name: "Focal - Add File To Workspace"
+      dist: focal
+      script:
+        - docker build -t test:1.2.3 .
+        - docker save --output test.tar test:1.2.3
+      workspaces:
+        create:
+          name: docker_image_focal
+          paths:
+            - test.tar
+    - name: "Focal - Use File From Workspace"
+      dist: jammy
+      script:
+        - docker images
+        - docker load -i -test.tar
+        - docker images
+      workspaces:
+        use:
+          name: docker_image_focal
+    - name: "Jammy - Add File To Workspace"
+      dist: jammy
+      script:
+        - docker build -t test:1.2.3 .
+        - docker save --output test.tar test:1.2.3
+      workspaces:
+        create:
+          name: docker_image_jammy
+          paths:
+            - test.tar
+    - name: "Jammy - Use File From Workspace"
+      dist: jammy
+      script:
+        - docker images
+        - docker load -i -test.tar
+        - docker images
+      workspaces:
+        use:
+          name: docker_image_jammy
+      
