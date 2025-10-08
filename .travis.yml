@@ -4,7 +4,8 @@ language: shell
 
 jobs:
   include:
-    - name: "Focal - Add File To Workspace"
+    - stage: make_WS
+      name: "Focal - Add File To Workspace"
       dist: focal
       script:
         - docker build -t test:1.2.3 .
@@ -14,7 +15,8 @@ jobs:
           name: docker_image_focal
           paths:
             - test.tar
-    - name: "Focal - Use File From Workspace"
+    - stage: use_WS
+      name: "Focal - Use File From Workspace"
       dist: jammy
       script:
         - docker images
@@ -22,7 +24,8 @@ jobs:
         - docker images
       workspaces:
         use: docker_image_focal
-    - name: "Jammy - Add File To Workspace"
+    - stage: make_WS
+      name: "Jammy - Add File To Workspace"
       dist: jammy
       script:
         - docker build -t test:1.2.3 .
@@ -32,7 +35,8 @@ jobs:
           name: docker_image_jammy
           paths:
             - test.tar
-    - name: "Jammy - Use File From Workspace"
+    - stage: use_WS
+      name: "Jammy - Use File From Workspace"
       dist: jammy
       script:
         - docker images
