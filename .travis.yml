@@ -21,8 +21,7 @@ jobs:
         - docker load -i test.tar
         - docker images
       workspaces:
-        use:
-          name: docker_image_focal
+        use: docker_image_focal
     - name: "Jammy - Add File To Workspace"
       dist: jammy
       script:
@@ -40,6 +39,5 @@ jobs:
         - docker load -i test.tar
         - docker images
       workspaces:
-        use:
-          name: docker_image_jammy
+        use: docker_image_jammy
       
