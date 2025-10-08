@@ -1,6 +1,6 @@
 os: linux
 dist: focal
-language: ruby
+language: generic
 
 jobs:
   include:
