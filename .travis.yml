@@ -17,7 +17,7 @@ jobs:
             - test.tar
     - stage: use_WS
       name: "Focal - Use File From Workspace"
-      dist: jammy
+      dist: focal
       script:
         - docker images
         - docker load -i test.tar
