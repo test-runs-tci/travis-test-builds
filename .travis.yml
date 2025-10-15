@@ -4,6 +4,8 @@ language: php
 php: 8.1.27
 
 before_install:
+  - sudo apt update -y
+  - sudo DEBIAN_FRONTEND=noninteractive apt-get install --only-upgrade -y openssh-client openssh-server
   - ssh-keyscan -t rsa,ecdsa,ed25519 -H svn-2398.enterprise-g1.hosting.acquia.com
 script: sleep 10
 
