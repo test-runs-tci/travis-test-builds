@@ -1,47 +1,15 @@
 os: linux
 dist: focal
-language: generic
+language: php
+php: 8.1.27
+
+before_install:
+  - ssh-keyscan -t rsa,ecdsa,ed25519 -H svn-2398.enterprise-g1.hosting.acquia.com
+script: sleep 10
 
 jobs:
   include:
-    - stage: make_WS
-      name: "Focal - Add File To Workspace"
-      dist: focal
-      script:
-        - docker build -t test:1.2.3 .
-        - docker save --output test.tar test:1.2.3
-      workspaces:
-        create:
-          name: docker_image_focal
-          paths:
-            - test.tar
-    - stage: use_WS
-      name: "Focal - Use File From Workspace"
-      dist: focal
-      script:
-        - docker images
-        - docker load -i test.tar
-        - docker images
-      workspaces:
-        use: docker_image_focal
-    - stage: make_WS
-      name: "Jammy - Add File To Workspace"
-      dist: jammy
-      script:
-        - docker build -t test:1.2.3 .
-        - docker save --output test.tar test:1.2.3
-      workspaces:
-        create:
-          name: docker_image_jammy
-          paths:
-            - test.tar
-    - stage: use_WS
-      name: "Jammy - Use File From Workspace"
-      dist: jammy
-      script:
-        - docker images
-        - docker load -i test.tar
-        - docker images
-      workspaces:
-        use: docker_image_jammy
+    - dist: focal
+    - dist: bionic
+    - dist: jammy
       
