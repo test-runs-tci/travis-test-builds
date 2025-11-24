@@ -1,12 +1,13 @@
 language: shell
 dist: focal
-script:
-  - java -version
 cache:
   directories:
     - $HOME/.gradle/caches/
 jobs:
   include:
-    - jdk: openjdk17
-    - jdk: openjdk21
-    - jdk: openjdk24
+    - script: sleep 1
+      jdk: openjdk17
+    - script: sleep 2
+      jdk: openjdk21
+    - script: sleep 3
+      jdk: openjdk24
