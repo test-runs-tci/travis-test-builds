@@ -1,17 +1,12 @@
-os: linux
-dist: focal
-language: php
-php: 8.1.27
+language: groovy
 
-before_install:
-  - sudo apt update -y
-  - sudo DEBIAN_FRONTEND=noninteractive apt-get install --only-upgrade -y openssh-client openssh-server
-  - ssh-keyscan -t rsa,ecdsa,ed25519 -H svn-2398.enterprise-g1.hosting.acquia.com
-script: sleep 10
-
-jobs:
+script:
+  - java -version
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+matrix:
   include:
-    - dist: focal
-    - dist: bionic
-    - dist: jammy
-      
+    - jdk: openjdk17
+    - jdk: openjdk21
+    - jdk: openjdk24
