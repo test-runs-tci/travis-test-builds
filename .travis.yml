@@ -1,4 +1,4 @@
-language: groovy
+language: shell
 dist: focal
 script:
   - java -version
