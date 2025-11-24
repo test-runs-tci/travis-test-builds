@@ -6,6 +6,6 @@ cache:
 script: java -version
 jobs:
   include:
-    - jdk: semeru17
-    - jdk: semeru21
-    - jdk: semeru24
+    - jdk: openjdk17
+    - jdk: openjdk21
+    - jdk: openjdk24
