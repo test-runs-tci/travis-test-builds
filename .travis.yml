@@ -3,11 +3,9 @@ dist: focal
 cache:
   directories:
     - $HOME/.gradle/caches/
+script: java -version
 jobs:
   include:
-    - script: sleep 1
-      jdk: semeru17
-    - script: sleep 2
-      jdk: semeru21
-    - script: sleep 3
-      jdk: semeru24
+    - jdk: semeru17
+    - jdk: semeru21
+    - jdk: semeru24
