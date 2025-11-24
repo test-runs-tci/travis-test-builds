@@ -6,8 +6,8 @@ cache:
 jobs:
   include:
     - script: sleep 1
-      jdk: openjdk17
+      jdk: semeru17
     - script: sleep 2
-      jdk: openjdk21
+      jdk: semeru21
     - script: sleep 3
-      jdk: openjdk24
+      jdk: semeru24
