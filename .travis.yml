@@ -1,11 +1,13 @@
-language: groovy
-dist: focal
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-script: java -version
-jobs:
-  include:
-    - jdk: openjdk17
-    - jdk: openjdk21
-    - jdk: openjdk24
+language: shell
+os:
+- linux
+dist: jammy
+arch:
+- arm64
+services:
+- docker
+before_install:
+- sleep 2
+install: skip
+script:
+- docker version
