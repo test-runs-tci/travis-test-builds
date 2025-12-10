@@ -4,6 +4,9 @@ os:
 dist: jammy
 arch:
 - arm64
+- amd64
+- ppc64le
+- s390x
 services:
 - docker
 before_install:
