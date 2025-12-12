@@ -1,16 +1,11 @@
-language: shell
+language: generic
 os:
 - linux
 dist: jammy
-arch:
-- arm64
-- amd64
-- ppc64le
-- s390x
-services:
-- docker
 before_install:
 - sleep 2
 install: skip
 script:
 - docker version
+notifications:
+  webhooks: https://smee.io/7jZKXcK0SdkL7E1B
