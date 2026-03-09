@@ -1,11 +1,18 @@
-language: generic
-os:
-- linux
+os: linux
 dist: jammy
-before_install:
-- sleep 2
-install: skip
-script:
-- docker version
-notifications:
-  webhooks: https://smee.io/7jZKXcK0SdkL7E1B
+language: minimal
+jobs:
+  include:
+    - stage: warm_cache
+      script:
+        - echo "foo" > foo.txt
+      workspaces:
+        create:
+          name: ws1
+          paths:
+            - foo.txt
+    - stage: use_cache
+      workspaces:
+        use: ws1
+      script:
+        - cat foo.txt || true
