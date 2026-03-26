@@ -7,7 +7,7 @@ before_install:
 - sleep 2
 install: skip
 script:
-- erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
+- erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), io:fwrite(Version), halt().' -noshell
 jobs:
   include:
     - dist: xenial
