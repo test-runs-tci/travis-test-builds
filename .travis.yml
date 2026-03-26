@@ -1,4 +1,4 @@
-language: generic
+language: erlang
 os:
 - linux
 before_install:
