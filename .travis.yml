@@ -1,6 +1,6 @@
 language: erlang
 otp_release:
-  - 20.3
+  - 21.2
 os:
 - linux
 before_install:
@@ -10,7 +10,6 @@ script:
 - docker version
 jobs:
   include:
-    - dist: xenial
     - dist: bionic
     - dist: focal
     - dist: jammy
