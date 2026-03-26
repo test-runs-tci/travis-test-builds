@@ -1,6 +1,6 @@
 language: erlang
 otp_release:
-  - 21.2
+  - 20.3.8
 os:
 - linux
 before_install:
