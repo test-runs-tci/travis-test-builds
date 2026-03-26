@@ -1,11 +1,15 @@
 language: generic
 os:
 - linux
-dist: jammy
 before_install:
 - sleep 2
 install: skip
 script:
 - docker version
-notifications:
-  webhooks: https://smee.io/7jZKXcK0SdkL7E1B
+jobs:
+  include:
+    - dist: xenial
+    - dist: bionic
+    - dist: focal
+    - dist: jammy
+    - dist: noble
