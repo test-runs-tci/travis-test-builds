@@ -1,13 +1,10 @@
-language: erlang
-otp_release:
-  - 20.3
+language: node_js
+node_js: 22
 os:
 - linux
+dist: focal
 before_install:
 - sleep 2
 install: skip
 script:
-- erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), io:fwrite(Version), halt().' -noshell
-jobs:
-  include:
-    - dist: xenial
+- sleep 5
