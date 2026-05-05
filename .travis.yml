@@ -10,4 +10,4 @@ before_install:
 - sleep 2
 install: skip
 script:
-- sleep 650
+- sleep 10
