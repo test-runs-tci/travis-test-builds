@@ -7,7 +7,7 @@ arch:
  - arm64
 dist: focal
 before_install:
-- sleep 2
+- sleep 5
 install: skip
 script:
 - sleep 10
