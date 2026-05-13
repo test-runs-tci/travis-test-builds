@@ -1,13 +1,11 @@
-language: shell
+language: php
 os:
 - linux
-arch:
- - s390x
- - ppc64le
- - arm64
 dist: focal
-before_install:
-- sleep 5
-install: skip
-script:
-- sleep 15
+sudo: true
+php:
+- '8.3'
+services:
+- mysql
+install: curl https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.15.1.zip
+script: ls -la | grep fakeobjects
