@@ -2,7 +2,9 @@ language: php
 os:
 - linux
 dist: focal
-sudo: true
+addons:
+  apt:
+    update: false
 php:
 - '8.3'
 services:
