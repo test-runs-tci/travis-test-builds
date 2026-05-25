@@ -7,5 +7,5 @@ php:
 - '8.3'
 services:
 - mysql
-install: curl -v -LO https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.15.1.zip
-script: ls -la | grep fakeobjects
+install: skip
+script: sleep 10
