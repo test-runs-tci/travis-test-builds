@@ -8,4 +8,4 @@ php:
 services:
 - mysql
 install: skip
-script: sleep 12
+script: sleep 5
