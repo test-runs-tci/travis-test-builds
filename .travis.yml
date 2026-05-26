@@ -1,10 +1,6 @@
-language: php
+language: shell
 os:
 - linux
-dist: focal
-php:
-- '8.3'
-services:
-- mysql
+dist: jammy
 install: skip
 script: sleep 7
