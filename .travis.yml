@@ -4,3 +4,13 @@ os:
 dist: jammy
 install: skip
 script: sleep 7
+
+addons:
+  artifacts: true
+
+jobs:
+  include:
+    - dist: bionic
+    - dist: focal
+    - dist: jammy
+    - dist: noble
