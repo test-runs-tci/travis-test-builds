@@ -3,7 +3,7 @@ os:
 - linux
 dist: jammy
 install: skip
-script: sleep 7
+script: sleep 10
 
 addons:
   artifacts: true
