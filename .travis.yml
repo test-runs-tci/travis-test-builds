@@ -1,4 +1,6 @@
-language: shell
+language: scala
+scala: '2.12.11'
+jdk: "openjdk8
 os:
 - linux
 dist: jammy
