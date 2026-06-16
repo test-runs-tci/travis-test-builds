@@ -1,6 +1,5 @@
-language: scala
-scala: 2.12.11
-jdk: openjdk8
+language: php
+php: 8.5
 os:
 - linux
 dist: jammy
