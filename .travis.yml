@@ -1,13 +1,9 @@
-language: php
-php: 8.5
+language: generic
 os:
 - linux
 dist: jammy
 install: skip
 script: sleep 5
-
-addons:
-  artifacts: true
 
 jobs:
   include:
