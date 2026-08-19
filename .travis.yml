@@ -1,4 +1,5 @@
-language: generic
+language: php
+php: 8.5
 os:
 - linux
 dist: jammy
