@@ -1,6 +1,11 @@
 language: shell
 os:
 - linux
-dist: rhel8
+dist: jammy
 install: skip
 script: sleep 5
+
+jobs:
+  include:
+    - dist: server-2016
+    - dist: rhel8
