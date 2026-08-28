@@ -1,14 +1,6 @@
-language: php
-php: 8.5
+language: shell
 os:
 - linux
-dist: jammy
+dist: rhel8
 install: skip
 script: sleep 5
-
-jobs:
-  include:
-    - dist: bionic
-    - dist: focal
-    - dist: jammy
-    - dist: noble
