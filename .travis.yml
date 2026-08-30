@@ -3,4 +3,6 @@ os:
 - linux
 dist: jammy
 install: skip
-script: sleep 5
+script:
+  - javac -version
+  - sleep 10
