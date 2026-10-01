@@ -5,4 +5,4 @@ dist: jammy
 install: skip
 script:
   - javac -version
-  - sleep 10
+  - sleep 12
