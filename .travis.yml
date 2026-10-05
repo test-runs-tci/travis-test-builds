@@ -1,8 +1,8 @@
-language: shell
+language: ruby
+ruby: 4.0.1
 os:
 - linux
-dist: jammy
+dist: noble
 install: skip
 script:
-  - javac -version
-  - sleep 12
+  - ruby -v
