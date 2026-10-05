@@ -1,7 +1,6 @@
 language: ruby
 ruby: 4.0.1
-os:
-- linux
+os: linux
 dist: noble
 install: skip
 script:
