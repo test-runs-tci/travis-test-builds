@@ -1,10 +1,8 @@
-language: ruby
-ruby: 4.0.1
+language: shell
 os: linux
 install: skip
 script:
-  - ruby -v
-
+  - sleep 25
 jobs:
   include:
     - dist: bionic
