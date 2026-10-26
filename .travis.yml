@@ -3,7 +3,7 @@ os: linux
 install: skip
 if: type IN(pull_request) OR branch IN (main) OR tag IS present
 script:
-  - sleep 25
+  - sleep 30
 jobs:
   include:
     - dist: bionic
